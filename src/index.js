@@ -12,11 +12,13 @@ import request from "request";
 import exemplos from "./exemplos"
 import imagens from "./imagens"
 
+import logo from "./images/logodatavaliddemo.png"
+
 const App = () => {
   const [retrato, setRetrato] = useState();
   const [payloadReq, setPayloadReq] = useState();
   const [payloadRes, setPayloadRes] = useState();
-  const [initValues, setInitValues] = useState({
+  const cleanValues = {
     "cpf": "",
     "nome": "",
     "sexo": "",
@@ -45,7 +47,8 @@ const App = () => {
     "cnh_situacao": "",
     "cnh_registro_nacional_estrangeiro": "",
     "cnh_possui_impedimento": ""
-  });
+  }
+  const [initValues, setInitValues] = useState(cleanValues);
 
   const inputFile = useRef(null);
 
@@ -194,10 +197,14 @@ const App = () => {
         <Form>
           <Container component="main" maxWidth="xl">
             <Paper variant="outlined" style={{ padding: 10 }}>
-
-              <Typography variant="h4" align="center">
-                Datavalid - Sandbox
-              </Typography>
+            <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    paddingBottom="10px"
+                  >
+              <img src={logo} alt="Logo Datavalid" />
+              </Box>
               <Grid container spacing={1}>
 
                 <Grid item xs={12} sm={12}>
@@ -564,7 +571,7 @@ const App = () => {
                     component={TextField} width="400px" alt=""
                     type="hidden"
                     name="thumb" />
-                  <img width="400px" alt="Selecione alguma foto" src={retrato} />
+                  <img width="200px" alt="Selecione alguma foto" src={retrato} />
                   </Box></Grid>}
 
 
@@ -574,7 +581,15 @@ const App = () => {
                     justifyContent="center"
                     alignItems="center"
                     paddingBottom="10px"
-                  >
+                  > <Button
+                  variant="contained"
+                  color="primary"
+                  paddingRight="10px"
+                  onClick={() => {setInitValues(cleanValues); setRetrato(null)}}
+                >
+                  Limpar
+                </Button>
+                &nbsp;&nbsp;
                     <Button
                       variant="contained"
                       color="primary"
