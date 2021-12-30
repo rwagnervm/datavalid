@@ -7,3 +7,4 @@ if git commit -am "OK"; then
 else
     echo "First: failure!"
 fi
+echo "Fim"
