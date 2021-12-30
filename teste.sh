@@ -2,6 +2,6 @@
 
 git add -A
 
-git commit -am "OK" && echo "success!"
+! git commit -am "OK" && exit 1
 
 echo "Fim"
